@@ -2,8 +2,8 @@
 
 namespace App\Modules\Services\NewsAPI\Requests;
 
+use App\Exceptions\ApiRequestException;
 use GuzzleHttp\Client as Client;
-use NewsAPI\Exceptions\ApiRequestException;
 
 class BaseClient {
 
