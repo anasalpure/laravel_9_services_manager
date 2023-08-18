@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Modules\Services\NewsAPI;
+namespace App\Modules\Services\Guardian;
 
 use App\Modules\Services\Contracts\IArticleService;
-use App\Modules\Services\NewsAPI\Requests\Client;
+use App\Modules\Services\Guardian\Requests\Client;
 
-class NewsAPI implements IArticleService {
+class Guardian implements IArticleService {
 
     public $options = [];
 
     public function __construct()
     {
         $this->options = [
-            'language' => 'en',
+            'lang' => 'en',
         ];
     }
 
