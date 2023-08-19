@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Jobs\LoadUserArticles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -37,6 +38,9 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+        if($request->user()->source && count($request->user()->keywords))
+            LoadUserArticles::dispatch($request->user())
+                ->onQueue("articles");
 
         return Redirect::route('profile.edit');
     }

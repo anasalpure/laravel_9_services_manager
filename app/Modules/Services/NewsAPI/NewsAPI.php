@@ -21,11 +21,16 @@ class NewsAPI implements IArticleService {
         return new Client();
     }
 
-
-    public function getArticles($keyword)
+    public function loadArticles($keyword)
     {
         return $this->getInstance()->get(array_merge($this->options, [
             'q' => $keyword
         ]));
+    }
+
+    public function getArticles($keyword)
+    {
+        $res = $this->loadArticles($keyword);
+        dd($res);
     }
 }

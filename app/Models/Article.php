@@ -9,6 +9,7 @@ class Article extends Model
     protected $fillable = [
         "title",
         "slug",
+        "service",
         "source",
         "source_url",
         "content",
@@ -24,7 +25,6 @@ class Article extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class)
-            ->withTimestamps();
+        return $this->belongsToMany(Tag::class);
     }
 }
