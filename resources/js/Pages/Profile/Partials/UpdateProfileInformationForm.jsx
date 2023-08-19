@@ -21,6 +21,7 @@ export default function UpdateProfileInformation({
             email: user.email,
             source: user.source,
             categories: user.categories || [],
+            keywords: user.keywords || [],
         });
 
     const submit = (e) => {
@@ -117,6 +118,29 @@ export default function UpdateProfileInformation({
                     />
 
                     <InputError className="mt-2" message={errors.categories} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="keywords" value="Keywords" />
+                    <CreatableSelect
+                        onChange={(values) =>
+                            setData(
+                                "keywords",
+                                values.map((val) => val.value)
+                            )
+                        }
+                        defaultValue={
+                            data.keywords &&
+                            data.keywords.map((category) => ({
+                                value: category,
+                                label: category,
+                            }))
+                        }
+                        closeMenuOnSelect={false}
+                        isMulti
+                    />
+
+                    <InputError className="mt-2" message={errors.keywords} />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

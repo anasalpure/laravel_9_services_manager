@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('source')->nullable();
             $table->text('categories')->nullable();
+            $table->text('keywords')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

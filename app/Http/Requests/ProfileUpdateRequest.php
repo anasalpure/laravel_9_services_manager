@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'source' => ['string',Rule::in(config('Apis.active_sources')) ],
             'categories' => ['array'],
-
+            'keywords' => ['array'],
         ];
     }
 }
