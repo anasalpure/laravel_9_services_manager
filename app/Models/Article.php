@@ -15,7 +15,8 @@ class Article extends Model
         "content",
         "is_published",
         "views",
-        "image"
+        "image",
+        "author"
     ];
 
     /**
@@ -30,10 +31,21 @@ class Article extends Model
 
     public static function search($request) {
         $query = $request->get('q');
-        
-        return Article::query()
+        $userCategories = $request->user()->categories ?? [];
+
+        return Article::query()->latest()
         ->when(!empty($query),function ($q) use($query) {
             $q->where('title','LIKE',"%$query%");
+        })
+        ->when(count($userCategories),function ($q) use($query,$userCategories) {
+            $q->whereHas('tags',function($tag) use($userCategories) {
+                foreach ($userCategories as $category) {
+                    if($category){
+                        $tag->where('title','LIKE',"%$category%");
+                    }
+                }
+            });
         });
     }
+
 }

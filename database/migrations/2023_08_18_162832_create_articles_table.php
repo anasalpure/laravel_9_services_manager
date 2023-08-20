@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string("slug");
             $table->string("service");
             $table->string("source")->nullable();
-            $table->string("source_url")->nullable();
+            $table->string("source_url",400)->nullable();
             $table->json("content")->nullable();
             $table->boolean("is_published")->default(true);
             $table->bigInteger("views")->default(0);
-            $table->string("image")->nullable();
+            $table->string("image",400)->nullable();
+            $table->string("author")->nullable();
             
             $table->unique("slug");
 
