@@ -11,14 +11,7 @@ export default function Authenticated({ auth, header, children }) {
         useState(false);
     axios.defaults.baseURL = "api/v1/";
     axios.defaults.withCredentials = true;
-    const user = usePage().props.auth.user;
-    console.log(user);
-    // if(){
 
-    // }
-    // axios.defaults.headers.common = {
-    //     Authorization: `bearer ${tokenInfo?.token}`,
-    // };
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
