@@ -4,10 +4,12 @@ namespace App\Modules\Services\Guardian;
 
 use App\Modules\Services\Contracts\IArticleService;
 use App\Modules\Services\Guardian\Requests\Client;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 class Guardian implements IArticleService {
 
     public $options = [];
+    public static $serviceName = 'guardian';
 
     public function __construct()
     {
@@ -24,9 +26,18 @@ class Guardian implements IArticleService {
     
     public function loadArticles($keyword)
     {
-        return $this->getInstance()->get(array_merge($this->options, [
-            'q' => $keyword
-        ]));
+        Log::stack(["service"])->info(static::$serviceName . " - searching for : " . $keyword . "...");
+        try {
+            $response =  $this->getInstance()->get(array_merge($this->options, [
+                'q' => $keyword
+            ]));
+        } catch (\Throwable $th) {
+            Log::stack(["service"])->info(static::$serviceName . " - Error for : " . $keyword . "...");
+            Log::stack(["service"])->error(static::$serviceName . $th->getMessage());
+        }
+
+
+        return $response;
     }
 
     public function getArticles($keyword)
@@ -38,7 +49,7 @@ class Guardian implements IArticleService {
                 $results [] = [
                     "title" => $result->webTitle,
                     "slug" => Str::slug($result->webTitle),
-                    "service" => 'guardian',
+                    "service" => static::$serviceName,
                     "source" => $result->sectionName,
                     "source_url" => $result->webUrl,
                     // "content" => '',

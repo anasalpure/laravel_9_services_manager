@@ -8,6 +8,7 @@ use App\Modules\Services\NewsAPI\Requests\Client;
 class NewsAPI implements IArticleService {
 
     public $options = [];
+    public static $serviceName = 'newsapi';
 
     public function __construct()
     {
