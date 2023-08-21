@@ -3,22 +3,29 @@ version: "2"
 services:
     mariadb:
         image: docker.io/bitnami/mariadb:10.6
+        container_name: laravel-mariadb
+        env_file:
+            - .env
         environment:
-            MYSQL_DATABASE: "${DB_DATABASE}"
-            # MYSQL_USER: "${DB_USERNAME}"
-            # MYSQL_PASSWORD: "${DB_PASSWORD}"
-            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            MARIADB_DATABASE: "${DB_DATABASE}"
+            # MARIADB_USER: "${DB_USERNAME}"
+            # MARIADB_PASSWORD: "${DB_PASSWORD}"
+            MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
             TZ: "UTC"
+        ports:
+            - "3306:3306"
     myapp:
-        image: docker.io/bitnami/laravel:10
+        image: docker.io/bitnami/laravel:9
+        container_name: laravel-app
         ports:
             - "8000:8000"
         environment:
             - DB_HOST=mariadb
             - DB_PORT=3306
-            - DB_USERNAME=bn_myapp
-            - DB_DATABASE=bitnami_myapp
+            - DB_DATABASE=laravel-services
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
         volumes:
-            - "./laravel-docker-full/src:/app"
+            - ".:/app"
         depends_on:
             - mariadb
