@@ -3,7 +3,7 @@ function ExternalLink({ title, className, ...props }) {
         <a
             className={
                 className +
-                " btn focus:outline-none focus:shadow-outline text-[#38bdf8]"
+                " btn focus:outline-none focus:shadow-outline text-primary"
             }
             target="_blank"
             {...props}

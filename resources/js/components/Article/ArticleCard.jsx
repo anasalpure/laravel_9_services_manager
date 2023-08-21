@@ -9,7 +9,7 @@ function ArticleCard({ article }) {
 
             <date className="font-bold text-gray-500">{article.date}</date>
             <div>
-                <span class="bg-[#38bdf8] text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+                <span class="bg-primary text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
                     {article.service}
                 </span>
             </div>

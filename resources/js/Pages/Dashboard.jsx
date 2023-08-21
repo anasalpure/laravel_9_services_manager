@@ -51,7 +51,11 @@ export default function Dashboard(props) {
                     onChange={handleSearch}
                 />
                 {articles.length > 0 && (
-                    <p className="text-gray-500 mb-3">#{articles.length}</p>
+                    <p className="text-gray-500 mb-3 font-bold">
+                        {" "}
+                        <span className="text-primary">#</span>{" "}
+                        {articles.length}
+                    </p>
                 )}
                 {loading && (
                     <ReactLoading

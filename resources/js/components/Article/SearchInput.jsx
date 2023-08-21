@@ -5,7 +5,7 @@ function SearchInput({ className, ...props }) {
                 type="search"
                 className={
                     className +
-                    "  w-full text-sm  transition border focus:outline-none focus:border-gray-600 rounded py-2 px-5 pr-10  leading-normal"
+                    "  w-full text-sm transition border focus:outline-none border-primary focus:border-primary-light rounded py-2 px-5 pr-10  leading-normal"
                 }
                 {...props}
             />
@@ -15,7 +15,7 @@ function SearchInput({ className, ...props }) {
                 style={{ top: 4, right: 4 }}
             >
                 <svg
-                    className="fill-current pointer-events-none text-gray-800 w-4 h-4"
+                    className="fill-current pointer-events-none text-primary w-4 h-4"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                 >

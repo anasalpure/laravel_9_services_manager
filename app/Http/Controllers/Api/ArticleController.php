@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::search($request)
-            ->limit(50)
+            ->limit(51)
             ->get();
         return ArticleResource::collection($articles);
     }
