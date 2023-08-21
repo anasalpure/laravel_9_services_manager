@@ -90,7 +90,7 @@ class NewYorkTimes implements IArticleService {
 
     private function getImageOf($multimedia) {
         if($multimedia && count($multimedia)){
-            return $multimedia[0]->url;
+            return "https://www.nytimes.com/" . $multimedia[0]->url;
         }
         return null;
     }
