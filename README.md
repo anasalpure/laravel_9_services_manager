@@ -2,6 +2,14 @@
 
 Services Manager is simple Laravel web application
 
+## used technologies
+
+-   Laravel
+-   React js
+-   Vite js
+-   Tailwind
+-   Docker
+
 ## Setup using Docker
 
 -   **copy .env.example file and rename it as .env**
