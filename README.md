@@ -1,6 +1,6 @@
 ## About Services Manager
 
-Services Manager is simple Laravel web application
+Services Manager is a simple Laravel web application
 
 ## Used technologies
 
