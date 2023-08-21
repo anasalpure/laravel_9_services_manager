@@ -21,7 +21,12 @@ class ProfileController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'sources' => config("Apis.active_sources"),
+            'sources' => array_map(function ($service)  {
+                return [
+                    "value" => $service,
+                    "label" => ucwords(str_replace('_',' ',$service))
+                ];
+            },config("Apis.active_sources")),
             'status' => session('status'),
         ]);
     }

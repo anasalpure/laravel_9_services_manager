@@ -84,10 +84,7 @@ export default function UpdateProfileInformation({
 
                     <Select
                         onChange={(val) => setData("source", val.value)}
-                        options={sources.map((source) => ({
-                            value: source,
-                            label: source,
-                        }))}
+                        options={sources ? sources : []}
                         defaultValue={{
                             value: data.source,
                             label: data.source,
