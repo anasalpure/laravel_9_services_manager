@@ -2,7 +2,7 @@
 
 Services Manager is simple Laravel web application
 
-## used technologies
+## Used technologies
 
 -   Laravel
 -   React js
